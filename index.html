@@ -1,19 +1,11 @@
 <!DOCTYPE html>
 <html lang="ru">
-<div class="teacher-corner-photo">
-    <img src="images/teacher.png" alt="Преподаватель" class="corner-img">
-    <span class="teacher-tooltip">АННА НИКУЛИНА</span>
-</div>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Английский — это захватывающе!</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --bg-dark: #0a0e27;
@@ -24,760 +16,575 @@
             --text-white: #ffffff;
             --text-gray: #9ca3af;
         }
-		
-		/* Фото в правом верхнем углу */
-.teacher-corner-photo {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1001; /* Поверх меню */
-}
-
-.corner-img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%; /* Делает фото круглым */
-    object-fit: cover; /* Чтобы фото не растягивалось */
-    border: 3px solid var(--neon-green); /* Цвет рамки */
-    box-shadow: 0 4px 15px rgba(204, 255, 0, 0.4); /* Свечение */
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.corner-img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 25px rgba(204, 255, 0, 0.6);
-    border-color: var(--neon-cyan);
-}
-
-/* Для мобильных устройств */
-@media (max-width: 768px) {
-    .teacher-corner-photo {
-        top: 10px;
-        right: 10px;
-    }
-    
-    .corner-img {
-        width:80px;
-        height: 50px;
-        border-width: 2px;
-    }
-}
 
         body {
-               font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    /* Фон тетрадного листа в клетку */
-    background: 
-        /* Вертикальные линии (синие) */
-        repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 24px,
-            #a4c8ff 24px,
-            #a4c8ff 25px
-        ),
-        /* Горизонтальные линии (синие) */
-        repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 24px,
-            #a4c8ff 24px,
-            #a4c8ff 25px
-        ),
-        /* Вертикальная красная линия слева */
-        linear-gradient(90deg, #ff9999 3px, transparent 3px),
-        /* Кремовый фон */
-        #fffef0;
-    background-attachment: fixed;
-    color: var(--text-white);
-    line-height: 1.6;
-    overflow-x: hidden;
-    position: relative;
-}
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: 
+                repeating-linear-gradient(90deg, transparent, transparent 24px, #a4c8ff 24px, #a4c8ff 25px),
+                repeating-linear-gradient(0deg, transparent, transparent 24px, #a4c8ff 24px, #a4c8ff 25px),
+                linear-gradient(90deg, #ff9999 3px, transparent 3px),
+                #fffef0;
+            background-attachment: fixed;
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-/* Тёмный оверлей для читаемости текста */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(10, 14, 39, 0.88);
-    z-index: -1;
-}
-
-        /* Navigation */
-        nav {
+        body::before {
+            content: '';
             position: fixed;
-            top: 0;
-            width: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 14, 39, 0.88);
+            z-index: -1;
+        }
+
+        /* Навигация */
+        nav {
+            position: fixed; top: 0; width: 100%;
             padding: 20px 5%;
             background: rgba(10, 14, 39, 0.9);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
+        nav ul { list-style: none; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+        nav a { color: var(--text-gray); text-decoration: none; transition: color 0.3s; font-weight: 500; }
+        nav a:hover { color: var(--neon-green); }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
+        /* Hero */
+        .hero { margin-top: 80px; padding: 80px 5%; }
+        .hero-container {
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 40px; max-width: 1400px; margin: 0 auto; flex-wrap: wrap;
         }
-
-        nav a {
-            color: var(--text-gray);
-            text-decoration: none;
-            transition: color 0.3s;
-            font-weight: 500;
+        .hero-teacher {
+            flex: 0 0 auto; display: flex; flex-direction: column;
+            align-items: center; gap: 15px; margin-right: auto;
         }
-
-        nav a:hover {
-            color: var(--neon-green);
+        .teacher-photo-large { position: relative; width: 280px; height: 280px; }
+        .teacher-img-large {
+            width: 280px; height: 280px; object-fit: cover;
+            border-radius: 50%; border: 4px solid var(--neon-green);
+            box-shadow: 0 0 60px rgba(204,255,0,0.4); position: relative; z-index: 2;
         }
-
-        /* Hero Section */
-        .hero {
-            margin-top: 80px;
-            padding: 100px 5%;
-            text-align: center;
-            background: radial-gradient(ellipse at top, rgba(204, 255, 0, 0.1), transparent 50%),
-                        radial-gradient(ellipse at bottom right, rgba(0, 217, 192, 0.1), transparent 50%);
+        .photo-glow-large {
+            position: absolute; width: 300px; height: 300px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(204,255,0,0.3), transparent 70%);
+            z-index: 1; animation: pulse-large 3s ease-in-out infinite;
         }
+        @keyframes pulse-large {
+            0%,100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        .teacher-name {
+            text-align: center; padding: 12px 20px;
+            background: rgba(255,255,255,0.05); border-radius: 16px;
+            border: 2px solid rgba(204,255,0,0.3);
+        }
+        .teacher-prefix { display: block; font-size: 12px; color: var(--text-gray); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px; }
+        .teacher-fio { font-size: 20px; font-weight: 700; color: var(--neon-green); margin: 0; }
 
+        .hero-content { flex: 1; min-width: 300px; text-align: center; display: flex; flex-direction: column; align-items: center; }
         .badge {
-            display: inline-block;
-            padding: 10px 25px;
-            background: rgba(204, 255, 0, 0.1);
-            border: 2px solid var(--neon-green);
-            border-radius: 50px;
-            color: var(--neon-green);
-            font-weight: 600;
-            margin-bottom: 30px;
-            font-size: 14px;
+            display: inline-block; padding: 8px 20px; background: rgba(204,255,0,0.1);
+            border: 2px solid var(--neon-green); border-radius: 50px;
+            color: var(--neon-green); font-weight: 600; margin-bottom: 25px; font-size: 13px;
         }
-
-        .hero h1 {
-            font-size: clamp(40px, 8vw, 80px);
-            margin-bottom: 20px;
-            line-height: 1.1;
-        }
-
+        .hero h1 { font-size: clamp(32px, 7vw, 60px); margin-bottom: 15px; line-height: 1.1; text-align: center; }
         .hero h1 span.neon-green { color: var(--neon-green); }
         .hero h1 span.neon-pink { color: var(--neon-pink); }
-        .hero h1 span.neon-cyan { color: var(--neon-cyan); }
         .hero h1 span.white { color: var(--text-white); }
-
-        .hero p {
-            font-size: 18px;
-            color: var(--text-gray);
-            max-width: 700px;
-            margin: 0 auto 40px;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-
+        .hero p { font-size: 16px; color: var(--text-gray); max-width: 600px; margin: 0 auto 30px; text-align: center; }
+        .cta-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 25px; }
         .btn {
-            padding: 18px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            border: 2px solid transparent;
+            padding: 14px 30px; border-radius: 50px; text-decoration: none;
+            font-weight: 700; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; border: 2px solid transparent;
         }
-
-        .btn-primary {
-            background: var(--neon-green);
+        .btn-primary { background: var(--neon-green); color: var(--bg-dark); box-shadow: 0 0 25px rgba(204,255,0,0.4); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(204,255,0,0.6); }
+        .btn-secondary { background: transparent; color: var(--text-white); border-color: rgba(255,255,255,0.3); }
+        .btn-secondary:hover { border-color: var(--text-white); background: rgba(255,255,255,0.1); }
+        .btn-vk { 
+            background: #4a76a8; 
+            color: white; 
+            box-shadow: 0 0 25px rgba(74,118,168,0.4);
+        }
+        .btn-vk:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 0 35px rgba(74,118,168,0.6); 
+        }
+        .btn-phone {
+            background: var(--neon-cyan);
             color: var(--bg-dark);
-            box-shadow: 0 0 30px rgba(204, 255, 0, 0.4);
+            box-shadow: 0 0 25px rgba(0,217,192,0.4);
         }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 40px rgba(204, 255, 0, 0.6);
+        .btn-phone:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 35px rgba(0,217,192,0.6);
         }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-white);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--text-white);
-            background: rgba(255, 255, 255, 0.1);
-        }
-
         .free-trial {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 30px;
-            background: rgba(0, 217, 192, 0.1);
-            border: 2px solid var(--neon-cyan);
-            border-radius: 50px;
-            color: var(--neon-cyan);
-            font-weight: 600;
+            display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px;
+            background: rgba(0,217,192,0.1); border: 2px solid var(--neon-cyan);
+            border-radius: 50px; color: var(--neon-cyan); font-weight: 600; font-size: 14px;
         }
 
-        /* Sections */
-        section {
-            padding: 100px 5%;
-        }
+        /* Секции */
+        section { padding: 80px 5%; }
+        .section-label { color: var(--neon-green); font-weight: 700; font-size: 13px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .section-title { font-size: clamp(28px, 5vw, 40px); margin-bottom: 15px; }
+        .section-subtitle { color: var(--text-gray); font-size: 16px; margin-bottom: 40px; }
 
-        .section-label {
-            color: var(--neon-green);
-            font-weight: 700;
-            font-size: 14px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .section-title {
-            font-size: clamp(32px, 5vw, 48px);
-            margin-bottom: 20px;
-        }
-
-        .section-subtitle {
-            color: var(--text-gray);
-            font-size: 18px;
-            margin-bottom: 50px;
-        }
-
-        /* Cards Grid */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
+        /* Карточки */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; }
         .card {
-            background: var(--bg-card);
-            border-radius: 24px;
-            padding: 40px 30px;
-            text-align: center;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
+            background: var(--bg-card); border-radius: 20px; padding: 30px 25px;
+            text-align: center; transition: all 0.3s; position: relative; overflow: hidden;
         }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+        .card-icon { font-size: 50px; margin-bottom: 20px; }
+        .card h3 { font-size: 19px; margin-bottom: 12px; color: var(--text-white); }
+        .card p { color: var(--text-gray); font-size: 14px; line-height: 1.5; }
 
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--neon-green), var(--neon-cyan));
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .card-icon {
-            font-size: 64px;
-            margin-bottom: 25px;
-        }
-
-        .card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-            color: var(--text-white);
-        }
-
-        .card p {
-            color: var(--text-gray);
-            line-height: 1.6;
-        }
-
-        /* Program Cards */
-        .program-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
+        /* Программа */
+        .program-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
         .program-card {
-            background: var(--bg-card);
-            border-radius: 20px;
-            padding: 35px;
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-            transition: all 0.3s;
-            border-left: 4px solid transparent;
+            background: var(--bg-card); border-radius: 16px; padding: 25px;
+            display: flex; gap: 15px; align-items: flex-start; transition: all 0.3s;
+            border-left: 3px solid transparent;
         }
-
-        .program-card:hover {
-            transform: translateX(10px);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
+        .program-card:hover { transform: translateX(5px); background: rgba(255,255,255,0.05); }
         .program-card.green { border-left-color: var(--neon-green); }
         .program-card.pink { border-left-color: var(--neon-pink); }
         .program-card.cyan { border-left-color: var(--neon-cyan); }
-
         .program-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            flex-shrink: 0;
+            width: 45px; height: 45px; border-radius: 10px; display: flex;
+            align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;
         }
+        .program-card.green .program-icon { background: rgba(204,255,0,0.2); }
+        .program-card.pink .program-icon { background: rgba(255,107,107,0.2); }
+        .program-card.cyan .program-icon { background: rgba(0,217,192,0.2); }
+        .program-content h3 { font-size: 18px; margin-bottom: 8px; }
+        .program-content p { color: var(--text-gray); font-size: 14px; }
 
-        .program-card.green .program-icon { background: rgba(204, 255, 0, 0.2); }
-        .program-card.pink .program-icon { background: rgba(255, 107, 107, 0.2); }
-        .program-card.cyan .program-icon { background: rgba(0, 217, 192, 0.2); }
-
-        .program-content h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        .program-content p {
-            color: var(--text-gray);
-            font-size: 15px;
-        }
-
-        /* Formats */
-        .formats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
+        /* Форматы */
+        .formats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; max-width: 900px; margin: 0 auto; }
         .format-card {
-            background: var(--bg-card);
-            border-radius: 30px;
-            padding: 60px 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s;
+            background: var(--bg-card); border-radius: 24px; padding: 40px 30px;
+            text-align: center; transition: all 0.3s; position: relative; overflow: hidden;
         }
-
-        .format-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-        }
-
-        .format-card.online::after {
-            background: var(--neon-cyan);
-            box-shadow: 0 0 20px var(--neon-cyan);
-        }
-
-        .format-card.offline::after {
-            background: var(--neon-green);
-            box-shadow: 0 0 20px var(--neon-green);
-        }
-
-        .format-card:hover {
-            transform: scale(1.02);
-        }
-
-        .format-icon {
-            font-size: 80px;
-            margin-bottom: 25px;
-        }
-
-        .format-card h3 {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-
+        .format-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+        .format-card.online::after { background: var(--neon-cyan); box-shadow: 0 0 15px var(--neon-cyan); }
+        .format-card.offline::after { background: var(--neon-green); box-shadow: 0 0 15px var(--neon-green); }
+        .format-card:hover { transform: scale(1.02); }
+        .format-icon { font-size: 60px; margin-bottom: 20px; }
+        .format-card h3 { font-size: 24px; margin-bottom: 15px; }
         .format-card.online h3 { color: var(--neon-cyan); }
         .format-card.offline h3 { color: var(--neon-green); }
+        .format-card p { color: var(--text-gray); font-size: 15px; }
 
-        .format-card p {
-            color: var(--text-gray);
-        }
-
-        /* Pricing */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-            align-items: start;
-        }
-
+        /* Цены */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1100px; margin: 0 auto; align-items: start; }
         .pricing-card {
-            background: var(--bg-card);
-            border-radius: 30px;
-            padding: 50px 40px;
-            text-align: center;
-            position: relative;
-            transition: all 0.3s;
+            background: var(--bg-card); border-radius: 24px; padding: 40px 30px;
+            text-align: center; position: relative; transition: all 0.3s;
         }
-
         .pricing-card.featured {
-            background: linear-gradient(135deg, rgba(204, 255, 0, 0.1), rgba(0, 217, 192, 0.1));
-            border: 2px solid var(--neon-green);
-            transform: scale(1.05);
+            background: linear-gradient(135deg, rgba(204,255,0,0.1), rgba(0,217,192,0.1));
+            border: 2px solid var(--neon-green); transform: scale(1.03);
         }
-
         .pricing-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--neon-pink);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
+            position: absolute; top: 15px; right: 15px; background: var(--neon-pink);
+            color: white; padding: 6px 16px; border-radius: 16px; font-size: 11px; font-weight: 700;
         }
-
-        .pricing-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .pricing-card h3 {
-            font-size: 20px;
-            margin-bottom: 20px;
-            color: var(--text-gray);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .price {
-            font-size: 56px;
-            font-weight: 800;
-            margin-bottom: 10px;
-        }
-
+        .pricing-icon { font-size: 40px; margin-bottom: 15px; }
+        .pricing-card h3 { font-size: 17px; margin-bottom: 15px; color: var(--text-gray); text-transform: uppercase; letter-spacing: 1px; }
+        .price { font-size: 44px; font-weight: 800; margin-bottom: 8px; }
         .pricing-card.individual .price { color: var(--neon-pink); }
         .pricing-card.pair .price { color: var(--neon-cyan); }
         .pricing-card.group .price { color: var(--neon-green); }
+        .price-period { color: var(--text-gray); margin-bottom: 25px; font-size: 14px; }
+        .pricing-features { list-style: none; text-align: left; margin-top: 25px; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .pricing-features li { color: var(--text-gray); margin-bottom: 10px; padding-left: 22px; position: relative; font-size: 14px; }
+        .pricing-features li::before { content: '✓'; position: absolute; left: 0; color: var(--neon-green); font-weight: bold; }
 
-        .price-period {
-            color: var(--text-gray);
-            margin-bottom: 30px;
+        /* Отзывы */
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto 40px; }
+        .review-card {
+            background: var(--bg-card); border-radius: 20px; padding: 30px;
+            position: relative; border: 1px solid rgba(255,255,255,0.1);
+        }
+        .review-header {
+            display: flex; align-items: center; gap: 15px; margin-bottom: 20px;
+        }
+        .review-avatar {
+            width: 50px; height: 50px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--neon-green), var(--neon-cyan));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; font-weight: bold; color: var(--bg-dark);
+        }
+        .review-meta h4 { font-size: 16px; margin-bottom: 4px; color: var(--text-white); }
+        .review-meta .review-date { font-size: 13px; color: var(--text-gray); }
+        .review-stars { color: #ffc107; font-size: 18px; margin-bottom: 15px; }
+        .review-text {
+            color: var(--text-gray); font-size: 15px; line-height: 1.7;
+            font-style: italic;
+        }
+        .review-child {
+            margin-top: 15px; padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px; color: var(--text-gray);
+        }
+        .review-child strong { color: var(--neon-green); }
+
+        /* Контакты - телефон */
+        .phone-reveal {
+            margin-top: 25px;
+            padding: 15px 25px;
+            background: rgba(0, 217, 192, 0.15);
+            border: 2px solid var(--neon-cyan);
+            border-radius: 16px;
+            display: none;
+            animation: slideDown 0.4s ease-out;
+        }
+        .phone-reveal.show {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .phone-reveal a {
+            color: var(--neon-cyan);
+            font-size: 22px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .phone-reveal a:hover {
+            text-decoration: underline;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .pricing-features {
-            list-style: none;
-            text-align: left;
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        /* Анимация появления */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(80px);
+            transition: opacity 1s ease-out, transform 1s cubic-bezier(0.5, 0, 0, 1);
+            will-change: opacity, transform;
         }
 
-        .pricing-features li {
-            color: var(--text-gray);
-            margin-bottom: 12px;
-            padding-left: 25px;
-            position: relative;
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .pricing-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--neon-green);
-            font-weight: bold;
+        .fade-in-section .card,
+        .fade-in-section .program-card,
+        .fade-in-section .format-card,
+        .fade-in-section .pricing-card,
+        .fade-in-section .review-card {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
 
-        /* Responsive */
+        .fade-in-section.is-visible .card,
+        .fade-in-section.is-visible .program-card,
+        .fade-in-section.is-visible .format-card,
+        .fade-in-section.is-visible .pricing-card,
+        .fade-in-section.is-visible .review-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-section.is-visible .card:nth-child(1) { transition-delay: 0.1s; }
+        .fade-in-section.is-visible .card:nth-child(2) { transition-delay: 0.2s; }
+        .fade-in-section.is-visible .card:nth-child(3) { transition-delay: 0.3s; }
+        .fade-in-section.is-visible .card:nth-child(4) { transition-delay: 0.4s; }
+
+        .fade-in-section.is-visible .program-card:nth-child(1) { transition-delay: 0.1s; }
+        .fade-in-section.is-visible .program-card:nth-child(2) { transition-delay: 0.2s; }
+        .fade-in-section.is-visible .program-card:nth-child(3) { transition-delay: 0.3s; }
+        .fade-in-section.is-visible .program-card:nth-child(4) { transition-delay: 0.4s; }
+        .fade-in-section.is-visible .program-card:nth-child(5) { transition-delay: 0.5s; }
+
+        .fade-in-section.is-visible .format-card:nth-child(1) { transition-delay: 0.15s; }
+        .fade-in-section.is-visible .format-card:nth-child(2) { transition-delay: 0.3s; }
+
+        .fade-in-section.is-visible .pricing-card:nth-child(1) { transition-delay: 0.1s; }
+        .fade-in-section.is-visible .pricing-card:nth-child(2) { transition-delay: 0.25s; }
+        .fade-in-section.is-visible .pricing-card:nth-child(3) { transition-delay: 0.4s; }
+
+        .fade-in-section.is-visible .review-card:nth-child(1) { transition-delay: 0.15s; }
+        .fade-in-section.is-visible .review-card:nth-child(2) { transition-delay: 0.35s; }
+
+        /* Кастомный курсор */
+        .custom-cursor { position: fixed; top: 0; left: 0; width: 0; height: 0; pointer-events: none; z-index: 9999; }
+        .cursor-pointer {
+            position: absolute; width: 18px; height: 18px; background: linear-gradient(135deg, #dc143c, #ff4757);
+            border-radius: 50%; transform: translate(-50%, -50%);
+            box-shadow: 0 0 15px rgba(220,20,60,0.8), 0 0 30px rgba(220,20,60,0.4);
+            animation: pulse-cursor 2s ease-in-out infinite;
+        }
+        .cursor-trail {
+            position: absolute; width: 35px; height: 35px; border: 2px solid rgba(220,20,60,0.5);
+            border-radius: 50%; transform: translate(-50%, -50%); animation: trail-fade 1s ease-out infinite;
+        }
+        @keyframes pulse-cursor {
+            0%,100% { transform: translate(-50%,-50%) scale(1); }
+            50% { transform: translate(-50%,-50%) scale(1.1); }
+        }
+        @keyframes trail-fade {
+            0% { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%,-50%) scale(1.5); }
+        }
+        body { cursor: none; }
+        a, button, .btn, input, textarea { cursor: pointer; }
         @media (max-width: 768px) {
-            nav ul {
-                gap: 20px;
-            }
-            
-            .hero {
-                padding: 60px 5%;
-            }
-            
-            section {
-                padding: 60px 5%;
-            }
-            
-            .program-grid,
-            .formats-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .pricing-card.featured {
-                transform: none;
-            }
-        }
-
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .floating {
-            animation: float 6s ease-in-out infinite;
+            .custom-cursor { display: none; }
+            body { cursor: auto; }
+            a, button, .btn, input, textarea { cursor: pointer; }
+            .hero-container { flex-direction: column; text-align: center; }
+            .hero-teacher { margin: 0 auto 25px auto; }
+            .hero-content { min-width: 100%; }
+            .teacher-photo-large, .teacher-img-large { width: 220px; height: 220px; }
+            .photo-glow-large { width: 240px; height: 240px; }
+            .hero h1 { font-size: 32px; }
+            nav ul { gap: 15px; }
+            section { padding: 60px 5%; }
+            .pricing-card.featured { transform: none; }
+            .reviews-grid { grid-template-columns: 1fr; }
+            .cta-buttons-contact { flex-direction: column; align-items: center; }
+            .cta-buttons-contact .btn { width: 100%; max-width: 300px; justify-content: center; }
         }
     </style>
 </head>
 <body>
- 
-	
-    <!-- Navigation -->
+    <!-- Кастомный курсор -->
+    <div class="custom-cursor"><div class="cursor-pointer"></div><div class="cursor-trail"></div></div>
+
+    <!-- Навигация -->
     <nav>
         <ul>
             <li><a href="#for-whom">Для кого</a></li>
             <li><a href="#program">Программа</a></li>
             <li><a href="#formats">Форматы</a></li>
             <li><a href="#prices">Цены</a></li>
-            <li><a href="#contact">Записаться</a></li>
+            <li><a href="#reviews">Отзывы</a></li>
+            <li><a href="#contact">Контакты</a></li>
         </ul>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="badge"> РЕПЕТИТОР АНГЛИЙСКОГО ЯЗЫКА ДЛЯ ДЕТЕЙ</div>
-        <h1>
-            <span class="neon-green">Английский</span> —<br>
-            <span class="white">это</span> <span class="neon-pink">увлекательно!</span><br>
-          
-        </h1>
-        <p>Учимся с нуля, общаемся на английском - онлайн и офлайн </p>
-        
-        <div class="cta-buttons">
-            <a href="#contact" class="btn btn-primary"> 🖊️ Записаться</a>
-            <a href="#prices" class="btn btn-secondary"> 💹 Цены</a>
+    <!-- Hero -->
+    <section class="hero fade-in-section">
+        <div class="hero-container">
+            <div class="hero-teacher">
+                <div class="teacher-photo-large">
+                    <img src="images/teacher.png" alt="Анна Никулина" class="teacher-img-large">
+                    <div class="photo-glow-large"></div>
+                </div>
+                <div class="teacher-name">
+                    <span class="teacher-prefix">Ваш преподаватель</span>
+                    <h3 class="teacher-fio">Анна Никулина</h3>
+                </div>
+            </div>
+            <div class="hero-content">
+                <div class="badge">🎓 РЕПЕТИТОР АНГЛИЙСКОГО ЯЗЫКА ДЛЯ ДЕТЕЙ</div>
+                <h1><span class="neon-green">Английский</span> —<br><span class="white">это</span> <span class="neon-pink">увлекательно!</span></h1>
+                <p>Учимся с нуля, общаемся на английском — онлайн и офлайн</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">🖊️ Записаться</a>
+                    <a href="#prices" class="btn btn-secondary">💹 Цены</a>
+                </div>
+                <div class="free-trial">🎁 Пробный урок 40 минут — бесплатно!</div>
+            </div>
         </div>
-          
-	
-       
+    </section>
 
-
-    <!-- For Whom Section -->
-    <section id="for-whom">
+    <!-- For Whom -->
+    <section id="for-whom" class="fade-in-section">
         <div class="section-label">👶 ДЛЯ КОГО</div>
         <h2 class="section-title">Занятия для каждого возраста</h2>
         <p class="section-subtitle">Индивидуальная программа с учётом возраста и уровня ребёнка</p>
-        
         <div class="cards-grid">
-            <div class="card">
-                <div class="card-icon">👦</div>
-                <h3>Дошкольники</h3>
-                <p>Делаем первые шаги к познанию языка через игры, песенки и сказки. </p>
-            </div>
-            
-            <div class="card">
-                <div class="card-icon">🎒</div>
-                <h3>Младшие школьники</h3>
-                <p>Помощь с домашним заданием, уверенный старт и любовь к языку</p>
-            </div>
-            
-            <div class="card">
-                <div class="card-icon">📖</div>
-                <h3>Средние классы</h3>
-                <p>Повышение успеваемости, ликвидация пробелов, расширение знаний</p>
-            </div>
-            
-            
+            <div class="card"><div class="card-icon">👦</div><h3>Дошкольники</h3><p>Первые шаги к языку через игры, песенки и сказки.</p></div>
+            <div class="card"><div class="card-icon">🎒</div><h3>Младшие школьники</h3><p>Помощь с домашним заданием, уверенный старт.</p></div>
+            <div class="card"><div class="card-icon">📖</div><h3>Средние классы</h3><p>Повышение успеваемости, ликвидация пробелов.</p></div>
         </div>
     </section>
 
-     <!-- Program Section -->
-    <section id="program" style="background: rgba(255,255,255,0.02);">
-        <div class="section-label"> ПРОГРАММА</div>
-        <h2 class="section-title">Комплексный подход к изучению английского языка</h2>
-       
-        
+    <!-- Program -->
+    <section id="program" class="fade-in-section" style="background: rgba(255,255,255,0.02);">
+        <div class="section-label">📚 ПРОГРАММА</div>
+        <h2 class="section-title">Комплексный подход</h2>
         <div class="program-grid">
-            <div class="program-card green">
-                <div class="program-icon">abc</div>
-                <div class="program-content">
-                    <h3>Английский с нуля</h3>
-                    <p>Алфавит, фонетика, первые слова — закладываем правильный фундамент</p>
-                </div>
-            </div>
-            
-            <div class="program-card pink">
-                <div class="program-icon">📝</div>
-                <div class="program-content">
-                    <h3>Помощь с домашним заданием</h3>
-                    <p>Разбираем задания вместе, объясняем понятно и без нервов</p>
-                </div>
-            </div>
-            
-            <div class="program-card cyan">
-                <div class="program-icon">📈</div>
-                <div class="program-content">
-                    <h3>Повышение успеваемости</h3>
-                    <p>Закрываем пробелы в знаниях, улучшаем оценки системно</p>
-                </div>
-            </div>
-            
-            <div class="program-card green">
-                <div class="program-icon">🌍</div>
-                <div class="program-content">
-                    <h3>Выход за рамки программы</h3>
-                    <p>Культура, современные темы, кино и музыка на английском</p>
-                </div>
-            </div>
-            
-            <div class="program-card cyan">
-                <div class="program-icon">💬</div>
-                <div class="program-content">
-                    <h3>Разговорный английский</h3>
-                    <p>Учимся говорить свободно, без страха сделать ошибку</p>
-                </div>
-            </div>
-            
- 
-        </div>
-
-
-
-
-
-    <!-- Formats Section -->
-    <section id="formats">
-        <div class="section-label"> ФОРМАТЫ</div>
-        <h2 class="section-title">Онлайн и офлайн</h2>
-        
-        
-        <div class="formats-grid">
-            <div class="format-card online">
-                <div class="format-icon">💻</div>
-                <h3>Онлайн</h3>
-                <p>Договоримся об удобном времени! Занимаемся в Zoom. Все материалы в интерактивном формате. </p>
-            </div>
-            
-            <div class="format-card offline">
-                <div class="format-icon">🏙️</div>
-                <h3>Офлайн</h3>
-                <p>Максимальная вовлечённость и мгновенная обратная связь.</p>
-            </div>
+            <div class="program-card green"><div class="program-icon">abc</div><div class="program-content"><h3>С нуля</h3><p>Алфавит, фонетика, первые слова — правильный фундамент.</p></div></div>
+            <div class="program-card pink"><div class="program-icon">📝</div><div class="program-content"><h3>Домашка</h3><p>Разбираем задания вместе, спокойно и понятно.</p></div></div>
+            <div class="program-card cyan"><div class="program-icon">📈</div><div class="program-content"><h3>Успеваемость</h3><p>Закрываем пробелы, улучшаем оценки системно.</p></div></div>
+            <div class="program-card green"><div class="program-icon">🌍</div><div class="program-content"><h3>За рамки</h3><p>Культура, кино, музыка — английский в жизни.</p></div></div>
+            <div class="program-card cyan"><div class="program-icon">💬</div><div class="program-content"><h3>Разговорный</h3><p>Говорим свободно, без страха ошибиться.</p></div></div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section id="prices" style="background: rgba(255,255,255,0.02);">
+    <!-- Formats -->
+    <section id="formats" class="fade-in-section">
+        <div class="section-label">💻 ФОРМАТЫ</div>
+        <h2 class="section-title">Онлайн и офлайн</h2>
+        <div class="formats-grid">
+            <div class="format-card online"><div class="format-icon">💻</div><h3>Онлайн</h3><p>Zoom, удобное время, интерактивные материалы.</p></div>
+            <div class="format-card offline"><div class="format-icon">🏙️</div><h3>Офлайн</h3><p>Живой контакт, мгновенная обратная связь.</p></div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="prices" class="fade-in-section" style="background: rgba(255,255,255,0.02);">
         <div class="section-label">💰 СТОИМОСТЬ</div>
-        <h2 class="section-title">СТОИМОСТЬ ЗАНЯТИЙ</h2>
-       
-        
+        <h2 class="section-title">Цены за 60 минут</h2>
         <div class="pricing-grid">
             <div class="pricing-card individual">
-                <div class="pricing-icon"> 👶 </div>
-                <h3>Индивидуально      1-4 классы</h3>
-                <div class="price">1 200 ₽</div>
-                <div class="price-period">за 60 минут</div>
-                <ul class="pricing-features">
-                    <li>Влюблю в английский с первого дня</li>
-                    <li>Научу говорить, а не зубрить</li>
-                    <li>Составлю индивидуальную программу</li>
-                </ul>
+                <div class="pricing-icon">👶</div><h3>1-4 классы</h3><div class="price">1 200 ₽</div><div class="price-period">индивидуально</div>
+                <ul class="pricing-features"><li>Влюблю в язык с первого дня</li><li>Научу говорить, а не зубрить</li><li>Индивидуальная программа</li></ul>
             </div>
-            
             <div class="pricing-card pair featured">
-             
-                <div class="pricing-icon"> 👧 </div>
-                <h3>Индивидуально       5-8 классы</h3>
-                <div class="price">1 500 ₽</div>
-                <div class="price-period">с человека · 60 минут</div>
-                <ul class="pricing-features">
-                    <li>Помогу догнать и освоить школьную программу</li>
-                    <li>Разработаю персональную стратегию</li>
-                    <li>Покажу, как изучать язык интересно</li>
-                </ul>
+                <div class="pricing-badge">ТОП</div><div class="pricing-icon">👧</div><h3>5-8 классы</h3><div class="price">1 500 ₽</div><div class="price-period">индивидуально</div>
+                <ul class="pricing-features"><li>Освоим школьную программу</li><li>Персональная стратегия</li><li>Изучаем язык в своём темпе</li></ul>
             </div>
-            
             <div class="pricing-card group">
-                <div class="pricing-icon"> 👨‍👩‍👧‍👦 </div>
-                <h3>Группа       3-6 чел.</h3>
-                <div class="price"> 900 ₽</div>
-                <div class="price-period">с человека · 60 минут</div>
-                <ul class="pricing-features">
-                    <li>Создам эффект команды</li>
-                    <li>Поддержу игровой формат</li>
-                    <li>Дам максимум разговорной практики</li>
-                </ul>
+                <div class="pricing-icon">👨‍👩‍👧‍👦</div><h3>Группа 3-4 чел.</h3><div class="price">900 ₽</div><div class="price-period">с человека</div>
+                <ul class="pricing-features"><li>Эффект команды</li><li>Игровой формат</li><li>Максимум разговорной практики</li></ul>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" style="text-align: center; padding: 120px 5%;">
-        <h2 class="section-title">Мне доверяют самое дорогое - своих детей!</h2>
-      
-        <a href="mailto:" class="btn btn-primary" style="font-size: 20px; padding: 25px 50px;">
-            🖊️ Записаться на урок
-        </a>
+    <!-- Reviews -->
+    <section id="reviews" class="fade-in-section" style="background: rgba(255,255,255,0.02);">
+        <div class="section-label">💬 ОТЗЫВЫ</div>
+        <h2 class="section-title">Что говорят родители</h2>
+        <p class="section-subtitle">Больше отзывов в моей группе во ВКонтакте</p>
+        
+        <div class="reviews-grid">
+            <!-- Отзыв 1 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">ЕК</div>
+                    <div class="review-meta">
+                        <h4>Елена К.</h4>
+                        <div class="review-date">15 января 2025</div>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">
+                    «Занимаемся с Анной уже 4 месяца. Сын пошёл во 2 класс с полным нежеланием учить английский - в школе сразу отбили интерес зубрёжкой. Анна нашла подход: сначала просто играли, смотрели мультики на английском, пели песенки. Оценки подтянулись с тройки до твёрдой четвёрки. В целом очень довольны!»
+                </div>
+                <div class="review-child">
+                    <strong>Ребёнок:</strong> 7 лет, 2 класс
+                </div>
+            </div>
+
+            <!-- Отзыв 2 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: linear-gradient(135deg, var(--neon-pink), var(--neon-cyan));">МС</div>
+                    <div class="review-meta">
+                        <h4>Марина С.</h4>
+                        <div class="review-date">3 февраля 2025</div>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">
+                    «Дочь ходит к Анне полгода. До этого был пробел в знаниях — пропустила месяц из-за болезни, потом никак не могла догнать. Анна не просто "натаскивает" на школьную программу, а реально объясняет, чтобы ребёнок понял логику. Дочь стала меньше нервничать перед контрольными. Из минусов - не всегда удаётся попасть на удобное время, удобное время занимают быстро. Но качество занятий того стоит. Рекомендую!»
+                </div>
+                <div class="review-child">
+                    <strong>Ребёнок:</strong> 12 лет, 6 класс
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="https://vk.com/reviews-235344065" target="_blank" class="btn btn-vk" style="font-size: 16px; padding: 18px 35px;">
+                📖 Читать отзывы во ВКонтакте
+            </a>
+        </div>
     </section>
 
+    <!-- Contact -->
+    <section id="contact" class="fade-in-section" style="text-align: center; padding: 100px 5%;">
+        <h2 class="section-title">ГОТОВЫ К РЕЗУЛЬТАТАМ?</h2>
+        <p style="color: var(--text-gray); font-size: 16px; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+            Свяжитесь со мной
+        </p>
+        
+        <div class="cta-buttons-contact" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 10px;">
+            <a href="https://vk.me/nika_englishclub" target="_blank" class="btn btn-vk" style="font-size: 16px; padding: 18px 30px;">
+                💬 Написать во ВКонтакте
+            </a>
+            <button class="btn btn-phone" id="phoneBtn" style="font-size: 16px; padding: 18px 30px; border: none; cursor: pointer;">
+                📞 Позвонить
+            </button>
+        </div>
+        
+        <!-- Скрытый номер телефона -->
+        <div class="phone-reveal" id="phoneReveal">
+            <span style="color: var(--text-gray); font-size: 14px;">Нажмите, чтобы позвонить:</span>
+            <a href="tel:+79670515221">+7 967 051 52 21</a>
+        </div>
+    </section>
+
+    <!-- Скрипты -->
     <script>
-        // Smooth scrolling
+        // Плавный скролл
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
 
-        // Add animation on scroll
+        // Анимация появления
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            threshold: 0.15,
+            rootMargin: '0px 0px -80px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('is-visible');
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.card, .program-card, .format-card, .pricing-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        document.querySelectorAll('.fade-in-section').forEach(el => {
             observer.observe(el);
         });
-    </script>
 
+        // Кастомный курсор
+        const cursor = document.querySelector('.custom-cursor');
+        const pointer = document.querySelector('.cursor-pointer');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+        document.addEventListener('click', () => {
+            pointer.style.transform = 'translate(-50%,-50%) scale(0.8)';
+            setTimeout(() => pointer.style.transform = 'translate(-50%,-50%) scale(1)', 100);
+        });
+        document.querySelectorAll('a, button, .btn, .card').forEach(el => {
+            el.addEventListener('mouseenter', () => pointer.style.transform = 'translate(-50%,-50%) scale(1.2)');
+            el.addEventListener('mouseleave', () => pointer.style.transform = 'translate(-50%,-50%) scale(1)');
+        });
+
+        // Показать номер телефона при клике на "Позвонить"
+        const phoneBtn = document.getElementById('phoneBtn');
+        const phoneReveal = document.getElementById('phoneReveal');
+        
+        if (phoneBtn && phoneReveal) {
+            phoneBtn.addEventListener('click', function() {
+                phoneReveal.classList.toggle('show');
+            });
+        }
+    </script>
 </body>
 </html>
