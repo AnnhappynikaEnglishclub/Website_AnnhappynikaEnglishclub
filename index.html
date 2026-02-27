@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Английский — это захватывающе!</title>
+    <title>Репетитор по английскому языку Анна Никулина</title>
+    <link rel="icon" href="images/favicon.jpg" type="image/jpg">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -77,13 +78,37 @@
             0%,100% { transform: scale(1); opacity: 0.5; }
             50% { transform: scale(1.1); opacity: 0.8; }
         }
+        
+        /* Бейдж опыта */
+        .experience-badge {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--neon-green), #d4ff00);
+            color: var(--bg-dark);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 15px rgba(204,255,0,0.4);
+            z-index: 10;
+            animation: badgeFloat 3s ease-in-out infinite;
+        }
+        @keyframes badgeFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
         .teacher-name {
             text-align: center; padding: 12px 20px;
             background: rgba(255,255,255,0.05); border-radius: 16px;
             border: 2px solid rgba(204,255,0,0.3);
         }
         .teacher-prefix { display: block; font-size: 12px; color: var(--text-gray); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px; }
-        .teacher-fio { font-size: 20px; font-weight: 700; color: var(--neon-green); margin: 0; }
+        .teacher-fio { font-size: 24px; font-weight: 700; color: var(--neon-green); margin: 0; }
 
         .hero-content { flex: 1; min-width: 300px; text-align: center; display: flex; flex-direction: column; align-items: center; }
         .badge {
@@ -103,8 +128,15 @@
         }
         .btn-primary { background: var(--neon-green); color: var(--bg-dark); box-shadow: 0 0 25px rgba(204,255,0,0.4); }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(204,255,0,0.6); }
-        .btn-secondary { background: transparent; color: var(--text-white); border-color: rgba(255,255,255,0.3); }
-        .btn-secondary:hover { border-color: var(--text-white); background: rgba(255,255,255,0.1); }
+        .btn-secondary { 
+            background: transparent; 
+            color: var(--text-white); 
+            border-color: rgba(255,255,255,0.3);
+        }
+        .btn-secondary:hover { 
+            border-color: var(--neon-green); 
+            background: rgba(204,255,0,0.1);
+        }
         .btn-vk { 
             background: #4a76a8; 
             color: white; 
@@ -124,9 +156,9 @@
             box-shadow: 0 0 35px rgba(0,217,192,0.6);
         }
         .free-trial {
-            display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px;
-            background: rgba(0,217,192,0.1); border: 2px solid var(--neon-cyan);
-            border-radius: 50px; color: var(--neon-cyan); font-weight: 600; font-size: 14px;
+            display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px;
+            background: rgba(204,255,0,0.1); border: 2px solid var(--neon-green);
+            border-radius: 50px; color: var(--neon-green); font-weight: 700; font-size: 20px;
         }
 
         /* Секции */
@@ -266,6 +298,11 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Разноцветный заголовок */
+        .colorful-title span:nth-child(1) { color: var(--neon-green); }
+        .colorful-title span:nth-child(2) { color: var(--text-white); }
+        .colorful-title span:nth-child(3) { color: var(--text-white); }
+
         /* Анимация появления */
         .fade-in-section {
             opacity: 0;
@@ -350,6 +387,12 @@
             .hero-content { min-width: 100%; }
             .teacher-photo-large, .teacher-img-large { width: 220px; height: 220px; }
             .photo-glow-large { width: 240px; height: 240px; }
+            .experience-badge {
+                bottom: 15px;
+                right: 15px;
+                font-size: 12px;
+                padding: 8px 15px;
+            }
             .hero h1 { font-size: 32px; }
             nav ul { gap: 15px; }
             section { padding: 60px 5%; }
@@ -367,7 +410,6 @@
     <!-- Навигация -->
     <nav>
         <ul>
-            <li><a href="#for-whom">Для кого</a></li>
             <li><a href="#program">Программа</a></li>
             <li><a href="#formats">Форматы</a></li>
             <li><a href="#prices">Цены</a></li>
@@ -383,6 +425,10 @@
                 <div class="teacher-photo-large">
                     <img src="images/teacher.png" alt="Анна Никулина" class="teacher-img-large">
                     <div class="photo-glow-large"></div>
+                    <!-- Бейдж опыта -->
+                    <div class="experience-badge">
+                        🎓 10+ лет опыта
+                    </div>
                 </div>
                 <div class="teacher-name">
                     <span class="teacher-prefix">Ваш преподаватель</span>
@@ -394,23 +440,11 @@
                 <h1><span class="neon-green">Английский</span> —<br><span class="white">это</span> <span class="neon-pink">увлекательно!</span></h1>
                 <p>Учимся с нуля, общаемся на английском — онлайн и офлайн</p>
                 <div class="cta-buttons">
-                    <a href="#contact" class="btn btn-primary">🖊️ Записаться</a>
+                    <a href="https://vk.com/nika_englishclub" target="_blank" class="btn btn-vk">📱 Подписаться в ВК</a>
                     <a href="#prices" class="btn btn-secondary">💹 Цены</a>
                 </div>
                 <div class="free-trial">🎁 Пробный урок 40 минут — бесплатно!</div>
             </div>
-        </div>
-    </section>
-
-    <!-- For Whom -->
-    <section id="for-whom" class="fade-in-section">
-        <div class="section-label">👶 ДЛЯ КОГО</div>
-        <h2 class="section-title">Занятия для каждого возраста</h2>
-        <p class="section-subtitle">Индивидуальная программа с учётом возраста и уровня ребёнка</p>
-        <div class="cards-grid">
-            <div class="card"><div class="card-icon">👦</div><h3>Дошкольники</h3><p>Первые шаги к языку через игры, песенки и сказки.</p></div>
-            <div class="card"><div class="card-icon">🎒</div><h3>Младшие школьники</h3><p>Помощь с домашним заданием, уверенный старт.</p></div>
-            <div class="card"><div class="card-icon">📖</div><h3>Средние классы</h3><p>Повышение успеваемости, ликвидация пробелов.</p></div>
         </div>
     </section>
 
@@ -419,11 +453,11 @@
         <div class="section-label">📚 ПРОГРАММА</div>
         <h2 class="section-title">Комплексный подход</h2>
         <div class="program-grid">
-            <div class="program-card green"><div class="program-icon">abc</div><div class="program-content"><h3>С нуля</h3><p>Алфавит, фонетика, первые слова — правильный фундамент.</p></div></div>
-            <div class="program-card pink"><div class="program-icon">📝</div><div class="program-content"><h3>Домашка</h3><p>Разбираем задания вместе, спокойно и понятно.</p></div></div>
-            <div class="program-card cyan"><div class="program-icon">📈</div><div class="program-content"><h3>Успеваемость</h3><p>Закрываем пробелы, улучшаем оценки системно.</p></div></div>
-            <div class="program-card green"><div class="program-icon">🌍</div><div class="program-content"><h3>За рамки</h3><p>Культура, кино, музыка — английский в жизни.</p></div></div>
-            <div class="program-card cyan"><div class="program-icon">💬</div><div class="program-content"><h3>Разговорный</h3><p>Говорим свободно, без страха ошибиться.</p></div></div>
+            <div class="program-card green"><div class="program-icon">abc</div><div class="program-content"><h3>С НУЛЯ</h3><p>Алфавит, фонетика, первые слова — прочный фундамент.</p></div></div>
+            <div class="program-card pink"><div class="program-icon">📝</div><div class="program-content"><h3>ДОМАШНЯЯ РАБОТА</h3><p>Разбираем задания вместе, спокойно и понятно.</p></div></div>
+            <div class="program-card cyan"><div class="program-icon">📈</div><div class="program-content"><h3>УСПЕВАЕМОСТЬ</h3><p>Закрываем пробелы в своем темпе, улучшаем оценки системно.</p></div></div>
+            <div class="program-card green"><div class="program-icon">🌍</div><div class="program-content"><h3>ВЫХОДИМ ЗА РАМКИ</h3><p>Культура, кино, музыка — английский в жизни.</p></div></div>
+            <div class="program-card cyan"><div class="program-icon">💬</div><div class="program-content"><h3>РАЗГОВОРНЫЙ</h3><p>Говорим свободно, без страха ошибиться.</p></div></div>
         </div>
     </section>
 
@@ -432,26 +466,26 @@
         <div class="section-label">💻 ФОРМАТЫ</div>
         <h2 class="section-title">Онлайн и офлайн</h2>
         <div class="formats-grid">
-            <div class="format-card online"><div class="format-icon">💻</div><h3>Онлайн</h3><p>Zoom, удобное время, интерактивные материалы.</p></div>
-            <div class="format-card offline"><div class="format-icon">🏙️</div><h3>Офлайн</h3><p>Живой контакт, мгновенная обратная связь.</p></div>
+            <div class="format-card online"><div class="format-icon">💻</div><h3>ОНЛАЙН</h3><p>Zoom, удобное время, интерактивные материалы.</p></div>
+            <div class="format-card offline"><div class="format-icon">🏙️</div><h3>ОФЛАЙН</h3><p>Живой контакт, , интерактив, мгновенная обратная связь.</p></div>
         </div>
     </section>
 
     <!-- Pricing -->
     <section id="prices" class="fade-in-section" style="background: rgba(255,255,255,0.02);">
         <div class="section-label">💰 СТОИМОСТЬ</div>
-        <h2 class="section-title">Цены за 60 минут</h2>
+        <h2 class="section-title">ЗАНЯТИЕ 60 минут</h2>
         <div class="pricing-grid">
             <div class="pricing-card individual">
                 <div class="pricing-icon">👶</div><h3>1-4 классы</h3><div class="price">1 200 ₽</div><div class="price-period">индивидуально</div>
-                <ul class="pricing-features"><li>Влюблю в язык с первого дня</li><li>Научу говорить, а не зубрить</li><li>Индивидуальная программа</li></ul>
+                <ul class="pricing-features"><li>Влюблю в язык с первого дня</li><li>Научу говорить, а не зубрить</li><li>Составлю индивидуальную программу</li></ul>
             </div>
             <div class="pricing-card pair featured">
-                <div class="pricing-badge">ТОП</div><div class="pricing-icon">👧</div><h3>5-8 классы</h3><div class="price">1 500 ₽</div><div class="price-period">индивидуально</div>
-                <ul class="pricing-features"><li>Освоим школьную программу</li><li>Персональная стратегия</li><li>Изучаем язык в своём темпе</li></ul>
+                <div class="pricing-badge">ТОП ВЫБОР</div><div class="pricing-icon">👧</div><h3>5-8 классы</h3><div class="price">1 500 ₽</div><div class="price-period">индивидуально</div>
+                <ul class="pricing-features"><li>Освоим школьную программу</li><li>Создадим персональную стратеги обучения</li><li>Изучаем язык в своём темпе</li></ul>
             </div>
             <div class="pricing-card group">
-                <div class="pricing-icon">👨‍👩‍👧‍👦</div><h3>Группа 3-4 чел.</h3><div class="price">900 ₽</div><div class="price-period">с человека</div>
+                <div class="pricing-icon">👨‍‍👧👦</div><h3>Группа 3-4 чел.</h3><div class="price">900 ₽</div><div class="price-period">с человека</div>
                 <ul class="pricing-features"><li>Эффект команды</li><li>Игровой формат</li><li>Максимум разговорной практики</li></ul>
             </div>
         </div>
@@ -510,9 +544,11 @@
 
     <!-- Contact -->
     <section id="contact" class="fade-in-section" style="text-align: center; padding: 100px 5%;">
-        <h2 class="section-title">ГОТОВЫ К РЕЗУЛЬТАТАМ?</h2>
-        <p style="color: var(--text-gray); font-size: 16px; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
-            Свяжитесь со мной
+        <h2 class="section-title colorful-title">
+            <span>НАЧНЕМ</span> <span>ВМЕСТЕ</span><span>?</span>
+        </h2>
+        <p style="color: var(--text-gray); font-size: 18px; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+            Позвоните или напишите, и мы договоримся об удобном времени.
         </p>
         
         <div class="cta-buttons-contact" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 10px;">
